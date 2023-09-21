@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft } from "react-icons/rx";
 import { RxCaretRight } from "react-icons/rx";
+import { HiHome } from "react-icons/hi";
+import { BiSearch } from "react-icons/bi";
+import Button from "./Button";
 
 interface HeaderProps {
   //accepts children as a prop and also accepts className as a prop
@@ -40,6 +43,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         items-center"
         >
           <button
+            onClick={() => router.back()}
             className="
           rounded-full
           bg-black
@@ -52,6 +56,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <RxCaretLeft className="text-white" size={35} />
           </button>
           <button
+            onClick={() => router.forward()}
             className="
           rounded-full
           bg-black
@@ -64,7 +69,69 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <RxCaretRight className="text-white" size={35} />
           </button>
         </div>
+        <div className="flex md:hidden gap-x-2 items-center">
+          <button
+            className="
+          rounded-full
+          p-2
+          bg-white
+          flex
+          items-center
+          justify-center
+          hover:opacity-75
+          transition
+          "
+          >
+            <HiHome className="text-black size{20}" />
+          </button>
+          <button
+            className="
+          rounded-full
+          p-2
+          bg-white
+          flex
+          items-center
+          justify-center
+          hover:opacity-75
+          transition
+          "
+          >
+            <BiSearch className="text-black size{20}" />
+          </button>
+        </div>
+        <div
+          className="
+        flex
+        justify-between
+        items-center
+        gaps-x-4"
+        >
+          <div>
+            <Button
+              onClick={() => {}}
+              className="
+              bg-transparent
+              text-neutral-300
+              font-medium"
+            >
+              Sign up
+            </Button>
+          </div>
+          <div>
+            <Button
+              onClick={() => {}}
+              className="
+              bg-white
+              px-6
+              py-2
+              "
+            >
+              Login
+            </Button>
+          </div>
+        </div>
       </div>
+      {children}
     </div>
   );
 };
